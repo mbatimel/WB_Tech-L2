@@ -7,7 +7,7 @@ package pattern
 // как ее выполнить. Единственное, что должен знать инициатор, это как отправить команду.
 import (
 	"fmt"
-	"time"
+	// "time"
 )
 
 type Command interface {
@@ -77,13 +77,13 @@ func NewButtonOff(command *OffCommand) *Button {
 		Command: command,
 	}
 }
-func main() {
-	tv := NewTv()
-	on := NewOn(tv)
-	off := NewOff(tv)
-	buttonOn := NewButtonOn(on)
-	buttonOn.Press()
-	time.Sleep(time.Duration(3) * time.Second)
-	buttonOff := NewButtonOff(off)
-	buttonOff.Press()
-}
+// func main() {
+// 	tv := NewTv()
+// 	on := NewOn(tv)
+// 	off := NewOff(tv)
+// 	buttonOn := NewButtonOn(on)
+// 	buttonOn.Press()
+// 	time.Sleep(time.Duration(3) * time.Second)
+// 	buttonOff := NewButtonOff(off)
+// 	buttonOff.Press()
+// }
