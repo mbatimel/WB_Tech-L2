@@ -1,0 +1,5 @@
+            JOP 5 orange
+apple 10 red
+apple 10 red
+banana 8 yellow
+grape 15 purple
