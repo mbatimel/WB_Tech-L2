@@ -9,7 +9,7 @@ import (
 	"github.com/pborman/getopt"
 )
 
-func openFile(path string) ([]string, error) {
+func ReadTeaxtFromFile(path string) ([]string, error) {
 	file, err := os.Open(path)
 	if err != nil {
 		return nil, err
@@ -68,18 +68,17 @@ func echo(file []string, i, after, before int, number bool) {
 	if endPoint != len(file) {
 		endPoint += 1
 	}
-	fmt.Println("------------------------")
+	
 	for line := startPoint; line < endPoint; line++ {
 		if number {
 			fmt.Printf("%d: ", line+1)
 		}
 		fmt.Printf("%s\n", file[line])
 	}
-	fmt.Println("------------------------")
 }
 
 func main() {
-	pattern := getopt.String('e', "", "паттерн")
+	pattern := getopt.String('p', "", "паттерн")
 	path := getopt.String('f', "", "файл")
 	after := getopt.IntLong("after", 'A', 0, "вывод N строк после совпадения")
 	before := getopt.IntLong("before", 'B', 0, "вывод N строк до совпадения")
@@ -87,12 +86,11 @@ func main() {
 	count := getopt.Bool('c', "вывести количество строк с совпадением")
 	ignore := getopt.Bool('i', "игнорировать различия регистра")
 	invert := getopt.Bool('v', "инвертировать вывод")
-	// fixed := *flag.Bool("F", false, "точное совпадение со строкой")
 	number := getopt.Bool('n', "напечатать номер строки")
 
 	getopt.Parse()
 
-	file, err := openFile(*path)
+	file, err := ReadTeaxtFromFile(*path)
 	if err != nil {
 		panic(err)
 	}
